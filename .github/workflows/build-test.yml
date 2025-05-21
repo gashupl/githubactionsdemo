@@ -13,6 +13,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      SOLUTION_PATH: src/Pg.GitHubActionsDemo/Pg.GitHubActionsDemo.sln
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,10 +26,10 @@ jobs:
           dotnet-version: '8.0.x' # Use your required .NET version
 
       - name: Restore dependencies
-        run: dotnet restore src/Pg.GitHubActionsDemo.sln
+        run: dotnet restore ${{ env.SOLUTION_PATH }}
 
       - name: Build
-        run: dotnet build src/Pg.GitHubActionsDemo.sln--no-restore --configuration Release
+        run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test src/Pg.GitHubActionsDemo.sln --no-build --configuration Release --collect:"XPlat Code Coverage"
+        run: dotnet test ${{ env.SOLUTION_PATH }} --no-build --configuration Release --collect:"XPlat Code Coverage"
