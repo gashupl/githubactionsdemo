@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Pg.GitHubActionsDemo.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7045",
+      "launchBrowser": false
+    }
+  }
+}
