@@ -23,10 +23,10 @@ jobs:
           dotnet-version: '8.0.x' # Use your required .NET version
 
       - name: Restore dependencies
-        run: dotnet restore src
+        run: dotnet restore src/Pg.GitHubActionsDemo.sln
 
       - name: Build
-        run: dotnet build src --no-restore --configuration Release
+        run: dotnet build src/Pg.GitHubActionsDemo.sln--no-restore --configuration Release
 
       - name: Test
-        run: dotnet test src --no-build --configuration Release --collect:"XPlat Code Coverage"
+        run: dotnet test src/Pg.GitHubActionsDemo.sln --no-build --configuration Release --collect:"XPlat Code Coverage"
