@@ -1,0 +1,32 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x' # Use your required .NET version
+
+      - name: Restore dependencies
+        run: dotnet restore src
+
+      - name: Build
+        run: dotnet build src --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test src --no-build --configuration Release --collect:"XPlat Code Coverage"
